@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
   if the user clicks to user button then it would be routed to the products page.
  */
 const Main = () => {
+  // const [accounts, setAccounts] = useState(undefined)
+
   return (
     <>
       <Header />
