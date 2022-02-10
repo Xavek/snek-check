@@ -27,12 +27,13 @@ async function main() {
                 orgnCounty: _originCountry,
                 uniqueId: _id
   */
+  //  Next thing is to interact with frontend with ethers.js
   const addProdTxn = await itsProduct.addProd("AirJordan", "India", 69);
   addProdTxn.wait();
   const addPrdo2 = await itsProduct.addProd("AirMax", "UAE", 676);
   addPrdo2.wait();
   // Bug Resolved
-  const isProd = await itsProduct.getProd(1);
+  const isProd = await itsProduct.getProd();
 
   console.log(isProd);
 }

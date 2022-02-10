@@ -1,10 +1,20 @@
+import Main from "./components/Main";
+import { Route, Routes } from "react-router-dom";
+import Manufacture from "./components/Manufacture";
+import Products from "./components/Products";
 function App() {
+  /*
+    User would first land to Home page with navbar and about fixed.
+    Inside main or body there would be Manufacture or User Button. 
+
+   */
   return (
     <>
-      <p>
-        Its a Product Check Application. You can get the information about
-        different Products wether they are geneuine or not.
-      </p>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/manufacture" element={<Manufacture />} />
+        <Route path="/user" element={<Products />} />
+      </Routes>
     </>
   );
 }

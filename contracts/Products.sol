@@ -33,8 +33,9 @@ contract Products {
     }
 
     // To reterive all the information about registered product
+    // Pass the whole storage level ProductInfo array as we wanted to return all the array items.
 
-    function getProd(uint256 _sID) public view returns (ProductInfo memory) {
-        return prodArr[_sID];
+    function getProd() public view returns (ProductInfo[] memory) {
+        return prodArr;
     }
 }
