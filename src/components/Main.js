@@ -16,11 +16,11 @@ const Main = () => {
   return (
     <>
       <Header />
-      <Link to="Manufacture">
+      <Link to="/Manufacture">
         <button>Manufacture</button>
       </Link>
-      <Link to="user">
-        <button>User</button>
+      <Link to="/Products">
+        <button>Products</button>
       </Link>
 
       <Footer />

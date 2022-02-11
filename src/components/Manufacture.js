@@ -1,4 +1,4 @@
-import { BigNumber, ethers } from "ethers";
+import { ethers } from "ethers";
 import React, { useEffect, useRef, useState } from "react";
 import connectToContract from "../utils/contract";
 import abi from "../utils/products.json";
@@ -26,10 +26,23 @@ const Manufacture = () => {
 
   const conectToMetaMask = async () => {
     if (window.ethereum) {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      handleAccounts(accounts);
+      if (window.ethereum) {
+        window.ethereum.on("chianChnaged", (_chainId) =>
+          window.location.reload()
+        );
+        const chainId = await window.ethereum.request({
+          method: "eth_chainId",
+        });
+        const rinkebyId = "0x4";
+        if (chainId === rinkebyId) {
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+          handleAccounts(accounts);
+        } else {
+          alert("Please use rinkeby network");
+        }
+      }
     }
   };
 
@@ -49,11 +62,11 @@ const Manufacture = () => {
     const prodName = refprodName.current.value;
     const orgnConty = reforgnConty.current.value;
     const uniqueId = refunqId.current.value;
-    const uniqueBigInt = BigNumber.from(uniqueId);
     refprodName.current.value = "";
     reforgnConty.current.value = "";
     refunqId.current.value = "";
-    console.log({ prodName, orgnConty, uniqueId });
+    const intUniq = parseInt(uniqueId);
+    console.log({ prodName, orgnConty, intUniq });
 
     if (!connectToContract) {
       console.error("This Object is Required");
@@ -70,15 +83,15 @@ const Manufacture = () => {
       );
       const createProd = await prodContract.addProd(
         prodName,
-        uniqueBigInt,
-        orgnConty
+        orgnConty,
+        intUniq
       );
       console.log("Create transaction started", createProd.hash);
 
       await createProd.wait();
-      console.log("Added Product.");
-    } finally {
-      console.log("Created.");
+      alert("Product Added...");
+    } catch (error) {
+      console.error(error);
     }
   };
 
