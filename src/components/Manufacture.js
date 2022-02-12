@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import React, { useEffect, useRef, useState } from "react";
+import { Router } from "react-router-dom";
 import connectToContract from "../utils/contract";
 import abi from "../utils/products.json";
 /*
@@ -90,6 +91,7 @@ const Manufacture = () => {
 
       await createProd.wait();
       alert("Product Added...");
+      Router.push("/");
     } catch (error) {
       console.error(error);
     }

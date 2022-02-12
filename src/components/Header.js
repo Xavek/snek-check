@@ -1,9 +1,9 @@
 import React from "react";
-
+// Header Navbar of The application.
 const Header = () => {
   return (
     <>
-      <p>Sneak Check</p>
+      <h1 className="text-3xl font-bold underline">Sneak Check</h1>
     </>
   );
 };

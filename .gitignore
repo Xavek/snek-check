@@ -8,7 +8,8 @@
 # testing
 /coverage
 
-
+# env_files
+.env
 
 # production
 /build
@@ -33,7 +34,6 @@ env.bat
 .vercel
 
 node_modules
-.env
 coverage
 coverage.json
 typechain
